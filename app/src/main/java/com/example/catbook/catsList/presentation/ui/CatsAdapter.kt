@@ -1,11 +1,11 @@
-package com.example.catbook.ui
+package com.example.catbook.catsList.presentation.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import com.example.catbook.catsList.data.model.CatsResponse
 import com.example.catbook.databinding.CatItemBinding
-import com.example.catbook.model.CatsResponse
 
 internal class CatsAdapter() : ListAdapter<CatsResponse, CatsViewHolder>(CatDiffCallback()) {
 

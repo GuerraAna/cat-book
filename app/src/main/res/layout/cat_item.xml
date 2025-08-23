@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:background="?android:attr/selectableItemBackground"
@@ -11,11 +10,10 @@
 	android:paddingEnd="16dp"
 	android:paddingBottom="12dp">
 
-	<TextView
-		android:id="@+id/itemTextView"
+	<androidx.appcompat.widget.AppCompatImageView
+		android:id="@+id/cat_image"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:textAppearance="?attr/textAppearanceSubtitle1"
-		tools:text="Texto do Item da Lista" />
+		android:scaleType="centerCrop" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
