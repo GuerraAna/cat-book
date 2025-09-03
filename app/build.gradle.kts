@@ -67,4 +67,7 @@ dependencies {
 
     // Optional: Coil to load images (you can use Glide, Picasso)
     implementation("io.coil-kt:coil:2.5.0")
+
+    // Paging to use pagination in lists
+    implementation("androidx.paging:paging-runtime:3.3.6")
 }

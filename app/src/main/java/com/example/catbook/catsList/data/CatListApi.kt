@@ -17,8 +17,7 @@ internal interface CatListApi {
     @GET("v1/images/search")
     suspend fun getCatList(
         @Query("limit") limit: Int = 10,
-        @Query("page") page: Int = 0,
-        @Query("breed_ids") breedIds: String? = null,
+        @Query("page") page: Int,
         @Query("api_key") apiKey: String = ""
     ): Response<List<CatsResponse>>
 }

@@ -2,12 +2,12 @@ package com.example.catbook.catsList.presentation.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import com.example.catbook.catsList.data.model.CatsResponse
 import com.example.catbook.databinding.CatItemBinding
 
-internal class CatsAdapter() : ListAdapter<CatsResponse, CatsViewHolder>(CatDiffCallback()) {
+internal class CatsAdapter : PagingDataAdapter<CatsResponse, CatsViewHolder>(CatDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatsViewHolder {
         val binding = CatItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -15,11 +15,14 @@ internal class CatsAdapter() : ListAdapter<CatsResponse, CatsViewHolder>(CatDiff
     }
 
     override fun onBindViewHolder(holder: CatsViewHolder, position: Int) {
-        val breed = getItem(position)
-        holder.bind(breed)
+        val cat = getItem(position)
+        // getItem() pode retornar null para placeholders
+        if (cat != null) {
+            holder.bind(cat)
+        } else {
+            holder.bindPlaceholder() // Método opcional para tratar placeholders
+        }
     }
-
-//    override fun getItemCount(): Int = catList.size
 
     private class CatDiffCallback : DiffUtil.ItemCallback<CatsResponse>() {
         override fun areItemsTheSame(oldItem: CatsResponse, newItem: CatsResponse): Boolean {
@@ -27,7 +30,7 @@ internal class CatsAdapter() : ListAdapter<CatsResponse, CatsViewHolder>(CatDiff
         }
 
         override fun areContentsTheSame(oldItem: CatsResponse, newItem: CatsResponse): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem == newItem
         }
     }
 }

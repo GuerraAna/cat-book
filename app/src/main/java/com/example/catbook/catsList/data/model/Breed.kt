@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Breed(
-    @SerializedName("weight") val weight: List<Weight>,
+    @SerializedName("weight") val weight: Weight,
     @SerializedName("id") val id: String,
     @SerializedName("name") val name: String,
     @SerializedName("cfa_url") val cfaUrl: String?,

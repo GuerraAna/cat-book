@@ -10,14 +10,16 @@ internal class CatsViewHolder(
     private val binding: CatItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    /**
-     * 
-     */
     fun bind(catItem: CatsResponse) {
         binding.catImage.load(catItem.url) {
             placeholder(R.drawable.ic_launcher_foreground)
             error(R.drawable.ic_launcher_background)
             crossfade(true)
         }
+    }
+
+    fun bindPlaceholder() {
+        // Implementar visual para placeholders se necessário
+        binding.catImage.setImageResource(R.drawable.ic_launcher_foreground)
     }
 }
