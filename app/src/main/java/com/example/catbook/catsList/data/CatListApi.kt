@@ -11,7 +11,6 @@ internal interface CatListApi {
      * Get details about cats to display in the cats list.
      * @param limit Number of cats to retrieve.
      * @param page Page of cats to retrieve.
-     * @param breedIds Filter cats by breed.
      * @param apiKey API key to authenticate the request.
      */
     @GET("v1/images/search")

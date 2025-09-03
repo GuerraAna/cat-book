@@ -51,10 +51,12 @@ internal class CatsActivity : AppCompatActivity() {
                         Log.d("CatsActivity", "Loading...")
                         // Mostrar loading
                     }
+
                     is LoadState.Error -> {
                         Log.e("CatsActivity", "Error: ${refresh.error.message}")
                         Toast.makeText(this@CatsActivity, "Error loading cats", Toast.LENGTH_SHORT).show()
                     }
+
                     is LoadState.NotLoading -> {
                         Log.d("CatsActivity", "Loaded successfully")
                         // Esconder loading
