@@ -15,13 +15,7 @@ internal class CatsAdapter : PagingDataAdapter<CatsResponse, CatsViewHolder>(Cat
     }
 
     override fun onBindViewHolder(holder: CatsViewHolder, position: Int) {
-        val cat = getItem(position)
-        // getItem() pode retornar null para placeholders
-        if (cat != null) {
-            holder.bind(cat)
-        } else {
-            holder.bindPlaceholder() // Método opcional para tratar placeholders
-        }
+        holder.bind(catItem = getItem(position))
     }
 
     private class CatDiffCallback : DiffUtil.ItemCallback<CatsResponse>() {

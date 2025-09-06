@@ -23,7 +23,7 @@ internal class CatsPagingSource(
                 else -> onError(responseCode)
             }
         } catch (exception: Exception) {
-            onError(exception.message ?: " Unknown Error")
+            onError(exception.message ?: UNKNOWN_ERROR)
         }
     }
 
@@ -39,18 +39,27 @@ internal class CatsPagingSource(
         currentPage: Int
     ): LoadResult.Page<Int, CatsResponse> {
         val cats = response.body() ?: emptyList()
-        val prevKey = if (currentPage == 0) null else currentPage - 1
-        val nextKey = if (cats.isNotEmpty()) currentPage + 1 else null
 
         return LoadResult.Page(
             data = cats,
-            prevKey = prevKey,
-            nextKey = nextKey
+            prevKey = getPrevPage(currentPage),
+            nextKey = getNextPage(cats, currentPage)
         )
     }
 
+    private fun getPrevPage(currentPage: Int): Int? {
+        return if (currentPage != 0) currentPage - 1 else null
+    }
+
+    private fun getNextPage(cats: List<CatsResponse>, currentPage: Int): Int? {
+        return if (cats.isNotEmpty()) currentPage + 1 else null
+    }
+
     private fun onError(message: String): LoadResult.Error<Int, CatsResponse> {
-        val errorMessage = "Erro na resposta da API: $message"
-        return LoadResult.Error(Exception(errorMessage))
+        return LoadResult.Error(throwable = Exception(message))
+    }
+
+    companion object {
+        private const val UNKNOWN_ERROR = "Unknown error"
     }
 }

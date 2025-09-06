@@ -17,6 +17,6 @@ internal interface CatListApi {
     suspend fun getCatList(
         @Query("limit") limit: Int = 10,
         @Query("page") page: Int,
-        @Query("api_key") apiKey: String = ""
+        @Query("api_key") apiKey: String = "live_ZdTzBS3OiNb23XVfi0QaO7rGFj4FLImBh99GERdK05Rn5kOSBRYXQDAZLP6c4iKl"
     ): Response<List<CatsResponse>>
 }
